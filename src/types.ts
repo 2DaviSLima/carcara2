@@ -3,6 +3,7 @@ export type Customer = {
 	name: string;
 	email: string;
 	status: boolean;
+	imageUrl: string | null;
 };
 
 export type ValidationFieldError = {
