@@ -20,11 +20,12 @@ export function getCustomerById(request: Request, response: Response): void {
 }
 
 export function createCustomer(request: Request, response: Response): void {
-	const { name, email } = request.body as CreateCustomer;
+	const { name, email, imageUrl } = request.body as CreateCustomer;
 
 	const customer = CustomerService.insertCustomer({
 		name,
-		email
+		email,
+		imageUrl
 	});
 
 	response.status(201).json(customer);
