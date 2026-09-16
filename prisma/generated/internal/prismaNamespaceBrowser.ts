@@ -100,8 +100,10 @@ export type CustomerScalarFieldEnum =
 export const InvoicesScalarFieldEnum = {
 	id: 'id',
 	amount: 'amount',
-	stutus: 'stutus',
-	customerId: 'customerId'
+	status: 'status',
+	date: 'date',
+	customerId: 'customerId',
+	createdAt: 'createdAt'
 } as const;
 
 export type InvoicesScalarFieldEnum =

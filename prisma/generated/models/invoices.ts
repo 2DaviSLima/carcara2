@@ -41,22 +41,28 @@ export type InvoicesSumAggregateOutputType = {
 export type InvoicesMinAggregateOutputType = {
 	id: number | null;
 	amount: number | null;
-	stutus: $Enums.InvoicesStatus | null;
+	status: $Enums.InvoicesStatus | null;
+	date: Date | null;
 	customerId: number | null;
+	createdAt: Date | null;
 };
 
 export type InvoicesMaxAggregateOutputType = {
 	id: number | null;
 	amount: number | null;
-	stutus: $Enums.InvoicesStatus | null;
+	status: $Enums.InvoicesStatus | null;
+	date: Date | null;
 	customerId: number | null;
+	createdAt: Date | null;
 };
 
 export type InvoicesCountAggregateOutputType = {
 	id: number;
 	amount: number;
-	stutus: number;
+	status: number;
+	date: number;
 	customerId: number;
+	createdAt: number;
 	_all: number;
 };
 
@@ -75,22 +81,28 @@ export type InvoicesSumAggregateInputType = {
 export type InvoicesMinAggregateInputType = {
 	id?: true;
 	amount?: true;
-	stutus?: true;
+	status?: true;
+	date?: true;
 	customerId?: true;
+	createdAt?: true;
 };
 
 export type InvoicesMaxAggregateInputType = {
 	id?: true;
 	amount?: true;
-	stutus?: true;
+	status?: true;
+	date?: true;
 	customerId?: true;
+	createdAt?: true;
 };
 
 export type InvoicesCountAggregateInputType = {
 	id?: true;
 	amount?: true;
-	stutus?: true;
+	status?: true;
+	date?: true;
 	customerId?: true;
+	createdAt?: true;
 	_all?: true;
 };
 
@@ -190,8 +202,10 @@ export type invoicesGroupByArgs<
 export type InvoicesGroupByOutputType = {
 	id: number;
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date;
 	customerId: number;
+	createdAt: Date;
 	_count: InvoicesCountAggregateOutputType | null;
 	_avg: InvoicesAvgAggregateOutputType | null;
 	_sum: InvoicesSumAggregateOutputType | null;
@@ -222,10 +236,12 @@ export type invoicesWhereInput = {
 	NOT?: Prisma.invoicesWhereInput | Prisma.invoicesWhereInput[];
 	id?: Prisma.IntFilter<'invoices'> | number;
 	amount?: Prisma.IntFilter<'invoices'> | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFilter<'invoices'>
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 	customerId?: Prisma.IntFilter<'invoices'> | number;
+	createdAt?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 	customer?: Prisma.XOR<
 		Prisma.CustomerScalarRelationFilter,
 		Prisma.CustomerWhereInput
@@ -235,8 +251,10 @@ export type invoicesWhereInput = {
 export type invoicesOrderByWithRelationInput = {
 	id?: Prisma.SortOrder;
 	amount?: Prisma.SortOrder;
-	stutus?: Prisma.SortOrder;
+	status?: Prisma.SortOrder;
+	date?: Prisma.SortOrder;
 	customerId?: Prisma.SortOrder;
+	createdAt?: Prisma.SortOrder;
 	customer?: Prisma.CustomerOrderByWithRelationInput;
 };
 
@@ -247,10 +265,12 @@ export type invoicesWhereUniqueInput = Prisma.AtLeast<
 		OR?: Prisma.invoicesWhereInput[];
 		NOT?: Prisma.invoicesWhereInput | Prisma.invoicesWhereInput[];
 		amount?: Prisma.IntFilter<'invoices'> | number;
-		stutus?:
+		status?:
 			| Prisma.EnumInvoicesStatusFilter<'invoices'>
 			| $Enums.InvoicesStatus;
+		date?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 		customerId?: Prisma.IntFilter<'invoices'> | number;
+		createdAt?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 		customer?: Prisma.XOR<
 			Prisma.CustomerScalarRelationFilter,
 			Prisma.CustomerWhereInput
@@ -262,8 +282,10 @@ export type invoicesWhereUniqueInput = Prisma.AtLeast<
 export type invoicesOrderByWithAggregationInput = {
 	id?: Prisma.SortOrder;
 	amount?: Prisma.SortOrder;
-	stutus?: Prisma.SortOrder;
+	status?: Prisma.SortOrder;
+	date?: Prisma.SortOrder;
 	customerId?: Prisma.SortOrder;
+	createdAt?: Prisma.SortOrder;
 	_count?: Prisma.invoicesCountOrderByAggregateInput;
 	_avg?: Prisma.invoicesAvgOrderByAggregateInput;
 	_max?: Prisma.invoicesMaxOrderByAggregateInput;
@@ -281,63 +303,79 @@ export type invoicesScalarWhereWithAggregatesInput = {
 		| Prisma.invoicesScalarWhereWithAggregatesInput[];
 	id?: Prisma.IntWithAggregatesFilter<'invoices'> | number;
 	amount?: Prisma.IntWithAggregatesFilter<'invoices'> | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusWithAggregatesFilter<'invoices'>
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeWithAggregatesFilter<'invoices'> | Date | string;
 	customerId?: Prisma.IntWithAggregatesFilter<'invoices'> | number;
+	createdAt?: Prisma.DateTimeWithAggregatesFilter<'invoices'> | Date | string;
 };
 
 export type invoicesCreateInput = {
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
+	createdAt?: Date | string;
 	customer: Prisma.CustomerCreateNestedOneWithoutInvoicesInput;
 };
 
 export type invoicesUncheckedCreateInput = {
 	id?: number;
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
 	customerId: number;
+	createdAt?: Date | string;
 };
 
 export type invoicesUpdateInput = {
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	customer?: Prisma.CustomerUpdateOneRequiredWithoutInvoicesNestedInput;
 };
 
 export type invoicesUncheckedUpdateInput = {
 	id?: Prisma.IntFieldUpdateOperationsInput | number;
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	customerId?: Prisma.IntFieldUpdateOperationsInput | number;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type invoicesCreateManyInput = {
 	id?: number;
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
 	customerId: number;
+	createdAt?: Date | string;
 };
 
 export type invoicesUpdateManyMutationInput = {
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type invoicesUncheckedUpdateManyInput = {
 	id?: Prisma.IntFieldUpdateOperationsInput | number;
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	customerId?: Prisma.IntFieldUpdateOperationsInput | number;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type InvoicesListRelationFilter = {
@@ -353,8 +391,10 @@ export type invoicesOrderByRelationAggregateInput = {
 export type invoicesCountOrderByAggregateInput = {
 	id?: Prisma.SortOrder;
 	amount?: Prisma.SortOrder;
-	stutus?: Prisma.SortOrder;
+	status?: Prisma.SortOrder;
+	date?: Prisma.SortOrder;
 	customerId?: Prisma.SortOrder;
+	createdAt?: Prisma.SortOrder;
 };
 
 export type invoicesAvgOrderByAggregateInput = {
@@ -366,15 +406,19 @@ export type invoicesAvgOrderByAggregateInput = {
 export type invoicesMaxOrderByAggregateInput = {
 	id?: Prisma.SortOrder;
 	amount?: Prisma.SortOrder;
-	stutus?: Prisma.SortOrder;
+	status?: Prisma.SortOrder;
+	date?: Prisma.SortOrder;
 	customerId?: Prisma.SortOrder;
+	createdAt?: Prisma.SortOrder;
 };
 
 export type invoicesMinOrderByAggregateInput = {
 	id?: Prisma.SortOrder;
 	amount?: Prisma.SortOrder;
-	stutus?: Prisma.SortOrder;
+	status?: Prisma.SortOrder;
+	date?: Prisma.SortOrder;
 	customerId?: Prisma.SortOrder;
+	createdAt?: Prisma.SortOrder;
 };
 
 export type invoicesSumOrderByAggregateInput = {
@@ -495,13 +539,17 @@ export type EnumInvoicesStatusFieldUpdateOperationsInput = {
 
 export type invoicesCreateWithoutCustomerInput = {
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
+	createdAt?: Date | string;
 };
 
 export type invoicesUncheckedCreateWithoutCustomerInput = {
 	id?: number;
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
+	createdAt?: Date | string;
 };
 
 export type invoicesCreateOrConnectWithoutCustomerInput = {
@@ -553,39 +601,49 @@ export type invoicesScalarWhereInput = {
 	NOT?: Prisma.invoicesScalarWhereInput | Prisma.invoicesScalarWhereInput[];
 	id?: Prisma.IntFilter<'invoices'> | number;
 	amount?: Prisma.IntFilter<'invoices'> | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFilter<'invoices'>
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 	customerId?: Prisma.IntFilter<'invoices'> | number;
+	createdAt?: Prisma.DateTimeFilter<'invoices'> | Date | string;
 };
 
 export type invoicesCreateManyCustomerInput = {
 	id?: number;
 	amount: number;
-	stutus: $Enums.InvoicesStatus;
+	status: $Enums.InvoicesStatus;
+	date: Date | string;
+	createdAt?: Date | string;
 };
 
 export type invoicesUpdateWithoutCustomerInput = {
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type invoicesUncheckedUpdateWithoutCustomerInput = {
 	id?: Prisma.IntFieldUpdateOperationsInput | number;
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type invoicesUncheckedUpdateManyWithoutCustomerInput = {
 	id?: Prisma.IntFieldUpdateOperationsInput | number;
 	amount?: Prisma.IntFieldUpdateOperationsInput | number;
-	stutus?:
+	status?:
 		| Prisma.EnumInvoicesStatusFieldUpdateOperationsInput
 		| $Enums.InvoicesStatus;
+	date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type invoicesSelect<
@@ -595,8 +653,10 @@ export type invoicesSelect<
 	{
 		id?: boolean;
 		amount?: boolean;
-		stutus?: boolean;
+		status?: boolean;
+		date?: boolean;
 		customerId?: boolean;
+		createdAt?: boolean;
 		customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>;
 	},
 	ExtArgs['result']['invoices']
@@ -609,8 +669,10 @@ export type invoicesSelectCreateManyAndReturn<
 	{
 		id?: boolean;
 		amount?: boolean;
-		stutus?: boolean;
+		status?: boolean;
+		date?: boolean;
 		customerId?: boolean;
+		createdAt?: boolean;
 		customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>;
 	},
 	ExtArgs['result']['invoices']
@@ -623,8 +685,10 @@ export type invoicesSelectUpdateManyAndReturn<
 	{
 		id?: boolean;
 		amount?: boolean;
-		stutus?: boolean;
+		status?: boolean;
+		date?: boolean;
 		customerId?: boolean;
+		createdAt?: boolean;
 		customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>;
 	},
 	ExtArgs['result']['invoices']
@@ -633,15 +697,17 @@ export type invoicesSelectUpdateManyAndReturn<
 export type invoicesSelectScalar = {
 	id?: boolean;
 	amount?: boolean;
-	stutus?: boolean;
+	status?: boolean;
+	date?: boolean;
 	customerId?: boolean;
+	createdAt?: boolean;
 };
 
 export type invoicesOmit<
 	ExtArgs extends
 		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs
 > = runtime.Types.Extensions.GetOmit<
-	'id' | 'amount' | 'stutus' | 'customerId',
+	'id' | 'amount' | 'status' | 'date' | 'customerId' | 'createdAt',
 	ExtArgs['result']['invoices']
 >;
 export type invoicesInclude<
@@ -675,8 +741,10 @@ export type $invoicesPayload<
 		{
 			id: number;
 			amount: number;
-			stutus: $Enums.InvoicesStatus;
+			status: $Enums.InvoicesStatus;
+			date: Date;
 			customerId: number;
+			createdAt: Date;
 		},
 		ExtArgs['result']['invoices']
 	>;
@@ -1288,8 +1356,10 @@ export interface Prisma__invoicesClient<
 export interface invoicesFieldRefs {
 	readonly id: Prisma.FieldRef<'invoices', 'Int'>;
 	readonly amount: Prisma.FieldRef<'invoices', 'Int'>;
-	readonly stutus: Prisma.FieldRef<'invoices', 'InvoicesStatus'>;
+	readonly status: Prisma.FieldRef<'invoices', 'InvoicesStatus'>;
+	readonly date: Prisma.FieldRef<'invoices', 'DateTime'>;
 	readonly customerId: Prisma.FieldRef<'invoices', 'Int'>;
+	readonly createdAt: Prisma.FieldRef<'invoices', 'DateTime'>;
 }
 
 // Custom InputTypes

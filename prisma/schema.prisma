@@ -35,9 +35,11 @@ model Customer {
   model invoices {
     id Int @id @default(autoincrement())
     amount Int
-    stutus InvoicesStatus
+    status InvoicesStatus
+    date DateTime
     customerId Int @map("customer_id")
+    createdAt DateTime @default(now()) @map("created_at")
     customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
-
+    
     @@map("invoices")
   }
